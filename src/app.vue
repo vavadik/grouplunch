@@ -1,5 +1,10 @@
 <template>
     <div id="app">
+        <vue-telegram-login
+            mode="callback"
+            telegram-login="vadim_galanov_test_bot"
+            @callback="vueTelegramLogin"
+        />
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark" v-navbar>
             <span class="navbar-brand">Navbar</span>
             <button class="navbar-toggler" type="button">
@@ -25,5 +30,16 @@
 </template>
 <script>
 import "@/directives/navbar";
-export default {};
+import { vueTelegramLogin } from "vue-telegram-login";
+export default {
+    components: {
+        vueTelegramLogin
+    },
+
+    methods: {
+        telegramLoginCallback(user) {
+            console.log(user);
+        }
+    }
+};
 </script>
