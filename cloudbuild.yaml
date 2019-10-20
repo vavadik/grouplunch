@@ -4,7 +4,10 @@ steps:
   args: ["install"]
 - name: node:10.15.1
   entrypoint: npm
-  args: ["run", "build"]
+  args: ["run", "${_BUILD_COMMAND}"]
 - name: "gcr.io/cloud-builders/gcloud"
-  args: ["app", "deploy"]
+  args: ["app", "deploy", "${_APP_CONFIG}"]
+substitutions:
+  _APP_CONFIG: dev.yaml
+  _BUILD_COMMAND: "build-dev"
 timeout: "1600s"
