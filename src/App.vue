@@ -1,32 +1,29 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div id="app">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" v-navbar>
+            <span class="navbar-brand">Navbar</span>
+            <button class="navbar-toggler" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" v-show="true">
+                <ul class="navbar-nav mr-auto">
+                    <router-link exact-active-class="active" class="nav-item" tag="li" to="/">
+                        <a href="#" class="nav-link">Home</a>
+                    </router-link>
+                    <router-link active-class="active" class="nav-item" tag="li" to="/users">
+                        <a href="#" class="nav-link">Users</a>
+                    </router-link>
+                    <router-link active-class="active" class="nav-item" tag="li" to="/about">
+                        <a href="#" class="nav-link">About</a>
+                    </router-link>
+                </ul>
+            </div>
+        </nav>
+        <div id="nav"></div>
+        <router-view />
     </div>
-    <router-view/>
-  </div>
 </template>
-
-<style lang="less">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
-</style>
+<script>
+import "@/directives/navbar";
+export default {};
+</script>
