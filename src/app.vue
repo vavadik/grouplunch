@@ -2,7 +2,7 @@
     <div id="app">
         <vue-telegram-login
             mode="callback"
-            telegram-login="vadim_galanov_test_bot"
+            v-bind:telegram-login="botId"
             @callback="vueTelegramLogin"
         />
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark" v-navbar>
@@ -30,6 +30,7 @@
 </template>
 <script>
 import "@/directives/navbar";
+import { botId } from "@/config";
 import { vueTelegramLogin } from "vue-telegram-login";
 export default {
     components: {

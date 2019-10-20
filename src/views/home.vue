@@ -23,6 +23,7 @@
 </template>
 
 <script>
+import { apiURL } from '@/config'
 export default {
     name: "home",
 
