@@ -7,7 +7,11 @@
             requestAccess="write"
             @callback="telegramLoginCallback"
         />
-        <nav v-if="currentUser && currentUser.id" class="navbar navbar-expand-lg navbar-dark bg-dark" v-navbar>
+        <nav
+            v-if="currentUser && currentUser.id"
+            class="navbar navbar-expand-lg navbar-dark bg-dark"
+            v-navbar
+        >
             <span class="navbar-brand">Navbar</span>
             <button class="navbar-toggler" type="button">
                 <span class="navbar-toggler-icon"></span>
@@ -40,7 +44,7 @@ export default {
     },
 
     computed: {
-        ...mapState(["currentUser"]),
+        ...mapState(["currentUser"])
     },
 
     data() {
@@ -51,19 +55,8 @@ export default {
 
     methods: {
         ...mapActions(["logIn"]),
-        doLogIn() {
-            this.logIn({
-                auth_date: 1571688608,
-                first_name: "Vadim",
-                hash:
-                    "fed4bd5048d084722b0871d346fe2b66ebcee8911e7d5bee2f6c613acffc2eff",
-                id: 110921322,
-                last_name: "Galanov",
-                username: "vadimgalanov"
-            });
-        },
         telegramLoginCallback(user) {
-            console.log(user);
+            this.logIn(user);
         }
     }
 };
