@@ -1,25 +1,31 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-
-const API_URL = "https://api-dot-grouplunch.appspot.com";
+import { find, logIn } from '@/api';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
+        currentUser: null
     },
     mutations: {
-    },
-    actions: {
-        async getAllUsers() {
-            let response = await fetch(`${API_URL}/users`)
-            return await response.json();
+        logIn(state, user) {
+            state.currentUser = user;
         },
-        async getAllMessages() {
-            let response = await fetch(`${API_URL}/messages`)
-            return await response.json();
+        logOut(state) {
+            state.currentUser = null;
         }
     },
-    modules: {
+    actions: {
+        getAllUsers() {
+            return find('user')
+        },
+        getAllMessages() {
+            return find('message')
+        },
+        async logIn({ commit }, user) {
+            let response = await logIn(user);
+            commit('logIn', response);
+        }
     },
 });
